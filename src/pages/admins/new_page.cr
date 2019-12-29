@@ -1,5 +1,6 @@
 class Admins::NewPage < MainLayout
   needs operation : SignUpAdmin
+  needs organisation : Organisation
   quick_def page_title, "New"
 
   def content
@@ -8,7 +9,7 @@ class Admins::NewPage < MainLayout
   end
 
   def render_admin_form(op)
-    form_for Admins::Create do
+    form_for Admins::Create.with(@organisation.id) do
       mount Shared::Field.new(op.save_admin_op.first_name), &.text_input(autofocus: "true")
       mount Shared::Field.new(op.save_admin_op.last_name)
 

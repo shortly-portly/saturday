@@ -4,7 +4,7 @@ class Admins::IndexPage < MainLayout
 
   def content
     h1 "All Admins"
-    link "New Admin", to: Admins::New
+    link "New Admin", to: Admins::New.with(@current_user.organisation_id)
     render_admins
   end
 

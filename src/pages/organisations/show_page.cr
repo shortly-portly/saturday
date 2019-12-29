@@ -13,6 +13,8 @@ class Organisations::ShowPage < MainLayout
     section do
       link "Edit", Organisations::Edit.with(@organisation.id)
       text " | "
+      link "Create Admin", Admins::New.with(@organisation.id)
+      text " | "
       link "Delete",
         Organisations::Delete.with(@organisation.id),
         data_confirm: "Are you sure?"

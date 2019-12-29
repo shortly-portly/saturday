@@ -1,6 +1,6 @@
 class Admins::Create < BrowserAction
   route do
-    SignUpAdmin.create(params) do |operation, user|
+    SignUpAdmin.create(params, role: Role::Admin.to_i) do |operation, user|
       if user
         flash.success = "The record has been saved"
         admin = AdminQuery.new.user_id(user.id).first

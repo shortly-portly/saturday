@@ -5,6 +5,7 @@ class CreateUsers::V00000000000001 < Avram::Migrator::Migration::V1
       add_timestamps
       add email : String, unique: true
       add encrypted_password : String
+      add role : Int32
     end
   end
 

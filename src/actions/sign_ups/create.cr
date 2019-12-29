@@ -2,7 +2,7 @@ class SignUps::Create < BrowserAction
   include Auth::RedirectSignedInUsers
 
   route do
-    SignUpUser.create(params) do |operation, user|
+    SignUpUser.create(params, role: Role::Super.to_i) do |operation, user|
       if user
         flash.info = "Thanks for signing up"
         sign_in(user)

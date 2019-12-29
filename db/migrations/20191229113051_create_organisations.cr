@@ -3,9 +3,9 @@ class CreateOrganisations::V20191229113051 < Avram::Migrator::Migration::V1
     create table_for(Organisation) do
       primary_key id : Int64
       add_timestamps
-      add name : String
+      add name : String, unique: true
       add address_line_1 : String
-      add address_line_2 : String
+      add address_line_2 : String?
       add city : String
       add county : String
       add postcode : String

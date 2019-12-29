@@ -15,6 +15,8 @@ class Organisations::ShowPage < MainLayout
       text " | "
       link "Create Admin", Admins::New.with(@organisation.id)
       text " | "
+      link "Create Nursery", Nurseries::New.with(@organisation.id)
+      text " | "
       link "Delete",
         Organisations::Delete.with(@organisation.id),
         data_confirm: "Are you sure?"

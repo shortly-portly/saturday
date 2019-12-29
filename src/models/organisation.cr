@@ -10,5 +10,6 @@ class Organisation < BaseModel
     column telephone : String
     column email : String
     column website : String
+
   end
 end

@@ -11,7 +11,8 @@ describe SignUpAdmin do
       "role"                  => "0",
     }
 
-    user = SignUpAdmin.create!(params)
+    organisation = OrganisationBox.create
+    user = SignUpAdmin.create!(params, organisation_id: organisation.id)
     user.email.should eq "dave@email.com"
 
     admin = AdminQuery.new.user_id(user.id).first
@@ -34,7 +35,8 @@ describe SignUpAdmin do
       "password_confirmation" => "davedave",
       "role"                  => "0",
     }
-    SignUpAdmin.create(params) do |operation, user|
+    organisation = OrganisationBox.create
+    SignUpAdmin.create(params, organisation_id: organisation.id) do |operation, user|
       user.should eq nil
       operation.save_admin_op.first_name.errors.should eq ["is required"]
       operation.save_admin_op.last_name.errors.should eq ["is required"]

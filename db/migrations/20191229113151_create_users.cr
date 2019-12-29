@@ -6,6 +6,8 @@ class CreateUsers::V00000000000001 < Avram::Migrator::Migration::V1
       add email : String, unique: true
       add encrypted_password : String
       add role : Int32
+
+      add_belongs_to organisation : Organisation, on_delete: :restrict
     end
   end
 

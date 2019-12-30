@@ -12,8 +12,6 @@ class SignIns::NewPage < AuthLayout
       submit "Sign In", flow_id: "sign-in-button"
     end
     link "Reset password", to: PasswordResetRequests::New
-    text " | "
-    link "Sign up", to: SignUps::New
   end
 
   private def sign_in_fields(op)

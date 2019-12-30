@@ -28,7 +28,7 @@ class Db::CreateRequiredSeeds < LuckyCli::Task
 
     # Create 1st organisation
     organisation = SaveOrganisation.create!(organisation_params)
-    SignUpUser.create!(super_params, organisation_id: organisation.id)
+    SignUpSuper.create!(super_params, organisation_id: organisation.id)
     puts "Done adding required data"
   end
 end
@@ -51,8 +51,7 @@ end
 private def super_params
   {
     "email"                 => "dave@email.com",
-    "password"              => "daviddavid",
-    "password_confirmation" => "daviddavid",
-    "role"                  => "0",
+    "password"              => "davedave",
+    "password_confirmation" => "davedave",
   }
 end

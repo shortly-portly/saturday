@@ -34,6 +34,24 @@ describe SaveOrganisation do
       operation.name.errors.should eq ["is already taken"]
     end
   end
+
+  it "should be able to delete if no associated records" do
+    organisation = SaveOrganisation.create!(valid_params)
+    organisation.delete
+    Organisation::BaseQuery.all.size.should eq 0
+  end
+
+  it "should throw an exception if trying to delete with associated records" do
+    organisation = SaveOrganisation.create!(valid_params)
+    user = SignUpAdmin.create!(valid_admin_params, organisation_id: organisation.id)
+
+    begin
+      organisation.delete
+    rescue ex
+      ex.message.should eq "update or delete on table \"organisations\" violates foreign key constraint \"users_organisation_id_fkey\" on table \"users\""
+    end
+    Organisation::BaseQuery.all.size.should eq 1
+  end
 end
 
 private def valid_params
@@ -48,5 +66,16 @@ private def valid_params
     "telephone"      => "111-111-111",
     "email"          => "contact@email.com",
     "website"        => "www.toytown.com",
+  }
+end
+
+private def valid_admin_params
+  {
+    "first_name"            => "Dave",
+    "last_name"             => "Simmons",
+    "email"                 => "dave@email.com",
+    "password"              => "davedave",
+    "password_confirmation" => "davedave",
+    "role"                  => Role::Admin.to_i.to_s,
   }
 end

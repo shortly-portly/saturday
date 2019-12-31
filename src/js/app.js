@@ -12,3 +12,6 @@ require("turbolinks").start();
 // document.addEventListener("turbolinks:load", function() {
 //   ...
 // })
+
+require("bootstrap")
+require("popper.js")

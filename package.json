@@ -3,7 +3,10 @@
   "private": true,
   "dependencies": {
     "@rails/ujs": "^6.0.0",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1",
     "normalize-scss": "^7.0.1",
+    "popper.js": "^1.16.0",
     "turbolinks": "^5.2.0"
   },
   "scripts": {

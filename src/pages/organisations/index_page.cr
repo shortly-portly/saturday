@@ -3,6 +3,10 @@ class Organisations::IndexPage < MainLayout
   quick_def page_title, "All"
 
   def content
+    div class: "alert alert-primary", role: "alert" do
+      text "This is a primary div"
+    end
+
     h1 "All Organisations"
     link "New Organisation", to: Organisations::New
     render_organisations
